@@ -69,7 +69,7 @@ export const ConfirmationPaneStateful = (props: IConfirmationPaneStatefulParams)
 
     // Move focus to the first button
     useEffect(() => {
-        const cleanup = preventFocusToMoveOutOfElement(controlProps.id as string);
+        preventFocusToMoveOutOfElement(controlProps.id as string);
         const focusableElements: HTMLElement[] | null = findAllFocusableElement(`#${controlProps.id}`);
         requestAnimationFrame(() => {
             if (focusableElements && focusableElements.length > 0 && focusableElements[0]) {
@@ -84,7 +84,6 @@ export const ConfirmationPaneStateful = (props: IConfirmationPaneStatefulParams)
             Event: TelemetryEvent.UXConfirmationPaneCompleted,
             ElapsedTimeInMilliseconds: uiTimer.milliSecondsElapsed
         });
-        return cleanup;
     }, []);
 
     return (

@@ -1,6 +1,6 @@
 import { LogLevel, TelemetryEvent } from "../../common/telemetry/TelemetryConstants";
 import React, { Dispatch, useCallback, useEffect, useState } from "react";
-import { announceMessageImmediately, createTimer, findAllFocusableElement, findParentFocusableElementsWithoutChildContainer, formatTemplateString, preventFocusToMoveOutOfElement, setFocusOnElement, setFocusOnSendBox, setTabIndices } from "../../common/utils";
+import { createTimer, findAllFocusableElement, findParentFocusableElementsWithoutChildContainer, formatTemplateString, preventFocusToMoveOutOfElement, setFocusOnElement, setFocusOnSendBox, setTabIndices } from "../../common/utils";
 
 import { DimLayer } from "../dimlayer/DimLayer";
 import { FacadeChatSDK } from "../../common/facades/FacadeChatSDK";
@@ -37,19 +37,13 @@ export const EmailTranscriptPaneStateful = (props: IEmailTranscriptPaneProps) =>
     
     const [facadeChatSDK]: [FacadeChatSDK | undefined, (facadeChatSDK: FacadeChatSDK) => void] = useFacadeSDKStore();
     const [initialEmail, setInitialEmail] = useState("");
-    // restoreFocus=false is used on the submit path: the notification banner
-    // (success or error) takes focus via NotificationHandler.setFocusOnNotificationCloseButton,
-    // so an intermediate restore to the chat-widget shell would otherwise cause SRs to
-    // announce "Enter <widget>" in between the dialog and the banner.
-    const closeEmailTranscriptPane = (restoreFocus = true) => {
+    const closeEmailTranscriptPane = () => {
         dispatch({ type: LiveChatWidgetActionType.SET_SHOW_EMAIL_TRANSCRIPT_PANE, payload: false });
-        if (restoreFocus) {
-            const previousFocusedElementId = state.appStates.previousElementIdOnFocusBeforeModalOpen;
-            if (previousFocusedElementId) {
-                setFocusOnElement("#" + previousFocusedElementId);
-            } else {
-                setFocusOnSendBox();
-            }
+        const previousFocusedElementId = state.appStates.previousElementIdOnFocusBeforeModalOpen;
+        if (previousFocusedElementId) {
+            setFocusOnElement("#" + previousFocusedElementId);
+        } else {
+            setFocusOnSendBox();
         }
         dispatch({ type: LiveChatWidgetActionType.SET_PREVIOUS_FOCUSED_ELEMENT_ID, payload: null });
         setTabIndices(elements, initialTabIndexMap, true);
@@ -57,22 +51,14 @@ export const EmailTranscriptPaneStateful = (props: IEmailTranscriptPaneProps) =>
 
     const onSend = useCallback(async (email: string) => {
         const liveChatContext = state?.domainStates?.liveChatContext;
-        closeEmailTranscriptPane(false);
+        closeEmailTranscriptPane();
         const chatTranscriptBody: IChatTranscriptBody = {
             emailAddress: email,
             attachmentMessage: props?.attachmentMessage ?? "The following attachment was uploaded during the conversation:"
         };
         try {
             await facadeChatSDK?.emailLiveChatTranscript(chatTranscriptBody, {liveChatContext});
-            const successMessage = state?.domainStates?.middlewareLocalizedTexts?.MIDDLEWARE_BANNER_FILE_EMAIL_ADDRESS_RECORDED_SUCCESS ?? defaultMiddlewareLocalizedTexts?.MIDDLEWARE_BANNER_FILE_EMAIL_ADDRESS_RECORDED_SUCCESS as string;
-            // Announce from a live region at document.body level so the
-            // screen reader speaks the confirmation immediately, without
-            // traversing the chat transcript on the way to the banner.
-            // Prefix with the explicit state word so SR users hear the outcome
-            // (visual users already see a success icon on the banner).
-            const successSrPrefix = state?.domainStates?.middlewareLocalizedTexts?.MIDDLEWARE_SR_PREFIX_SUCCESS ?? defaultMiddlewareLocalizedTexts.MIDDLEWARE_SR_PREFIX_SUCCESS as string;
-            announceMessageImmediately(`${successSrPrefix}${successMessage}`);
-            NotificationHandler.notifySuccess(NotificationScenarios.EmailAddressSaved, successMessage);
+            NotificationHandler.notifySuccess(NotificationScenarios.EmailAddressSaved, state?.domainStates?.middlewareLocalizedTexts?.MIDDLEWARE_BANNER_FILE_EMAIL_ADDRESS_RECORDED_SUCCESS ?? defaultMiddlewareLocalizedTexts?.MIDDLEWARE_BANNER_FILE_EMAIL_ADDRESS_RECORDED_SUCCESS as string);
             TelemetryHelper.logActionEventToAllTelemetry(LogLevel.INFO, {
                 Event: TelemetryEvent.EmailTranscriptSent,
                 Description: "Transcript sent to email successfully."
@@ -86,12 +72,9 @@ export const EmailTranscriptPaneStateful = (props: IEmailTranscriptPaneProps) =>
                 }
             });
             const message = formatTemplateString(state?.domainStates?.middlewareLocalizedTexts?.MIDDLEWARE_BANNER_FILE_EMAIL_ADDRESS_RECORDED_ERROR ?? defaultMiddlewareLocalizedTexts.MIDDLEWARE_BANNER_FILE_EMAIL_ADDRESS_RECORDED_ERROR as string, [email]);
-            const bannerMessage = props?.bannerMessageOnError ?? message;
-            const errorSrPrefix = state?.domainStates?.middlewareLocalizedTexts?.MIDDLEWARE_SR_PREFIX_ERROR ?? defaultMiddlewareLocalizedTexts.MIDDLEWARE_SR_PREFIX_ERROR as string;
-            announceMessageImmediately(`${errorSrPrefix}${bannerMessage}`);
             NotificationHandler.notifyError(
                 NotificationScenarios.EmailTranscriptError,
-                bannerMessage);
+                props?.bannerMessageOnError ?? message);
         }
     }, [props.attachmentMessage, props.bannerMessageOnError, facadeChatSDK, state.domainStates.liveChatContext]);
 
@@ -112,7 +95,7 @@ export const EmailTranscriptPaneStateful = (props: IEmailTranscriptPaneProps) =>
 
     // Move focus to the first button
     useEffect(() => {
-        const cleanup = preventFocusToMoveOutOfElement(controlProps.id as string);
+        preventFocusToMoveOutOfElement(controlProps.id as string);
         const focusableElements: HTMLElement[] | null = findAllFocusableElement(`#${controlProps.id}`);
         if (focusableElements) {
             focusableElements[0].focus();
@@ -127,7 +110,6 @@ export const EmailTranscriptPaneStateful = (props: IEmailTranscriptPaneProps) =>
             ElapsedTimeInMilliseconds: uiTimer.milliSecondsElapsed
         });
 
-        return cleanup;
     }, [initialEmail]);
 
     return (

@@ -1,43 +1,161 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="15" failures="0" time="98.679">
-  <testsuite name="focus trap - single focusable element" errors="0" failures="0" skipped="0" timestamp="2026-04-12T18:42:11" time="70.954" tests="3">
-    <testcase classname="focus trap - single focusable element chat button is visible and focusable" name="focus trap - single focusable element chat button is visible and focusable" time="13.431">
+<testsuites name="jest tests" tests="42" failures="4" time="211.06">
+  <testsuite name="markdown adjacent anchor merge" errors="0" failures="2" skipped="0" timestamp="2026-05-07T03:06:06" time="26.23" tests="3">
+    <testcase classname="markdown adjacent anchor merge two adjacent same-href anchors render as a single anchor" name="markdown adjacent anchor merge two adjacent same-href anchors render as a single anchor" time="6.879">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 1
+Received: 2
+    at C:\src\lcw\chat-widget\automation_tests\e2e\areas\accessibility\markdownAnchorMerge.spec.ts:66:29
+    at Generator.next (&lt;anonymous&gt;)
+    at fulfilled (C:\src\lcw\chat-widget\automation_tests\e2e\areas\accessibility\markdownAnchorMerge.spec.ts:24:58)</failure>
     </testcase>
-    <testcase classname="focus trap - single focusable element Tab on the chat button keeps focus within the widget" name="focus trap - single focusable element Tab on the chat button keeps focus within the widget" time="13.505">
+    <testcase classname="markdown adjacent anchor merge accessibility tree exposes a single link for the merged anchor" name="markdown adjacent anchor merge accessibility tree exposes a single link for the merged anchor" time="6.49">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 1
+Received: 2
+    at C:\src\lcw\chat-widget\automation_tests\e2e\areas\accessibility\markdownAnchorMerge.spec.ts:84:30
+    at Generator.next (&lt;anonymous&gt;)
+    at fulfilled (C:\src\lcw\chat-widget\automation_tests\e2e\areas\accessibility\markdownAnchorMerge.spec.ts:24:58)</failure>
     </testcase>
-    <testcase classname="focus trap - single focusable element Shift+Tab on the chat button keeps focus within the widget" name="focus trap - single focusable element Shift+Tab on the chat button keeps focus within the widget" time="9.027">
-    </testcase>
-  </testsuite>
-  <testsuite name="email transcript notification" errors="0" failures="0" skipped="0" timestamp="2026-04-12T18:42:11" time="79.404" tests="3">
-    <testcase classname="email transcript notification widget opens in designer mode with mock messages" name="email transcript notification widget opens in designer mode with mock messages" time="13.461">
-    </testcase>
-    <testcase classname="email transcript notification aria-live regions exist for immediate notification delivery" name="email transcript notification aria-live regions exist for immediate notification delivery" time="15.656">
-    </testcase>
-    <testcase classname="email transcript notification transcript container does not use assertive aria-live" name="email transcript notification transcript container does not use assertive aria-live" time="15.296">
-    </testcase>
-  </testsuite>
-  <testsuite name="bot initials accessibility" errors="0" failures="0" skipped="0" timestamp="2026-04-12T18:42:11" time="83.565" tests="3">
-    <testcase classname="bot initials accessibility widget loads with mock messages in designer mode" name="bot initials accessibility widget loads with mock messages in designer mode" time="17.047">
-    </testcase>
-    <testcase classname="bot initials accessibility bot messages use descriptive alt text instead of initials" name="bot initials accessibility bot messages use descriptive alt text instead of initials" time="19.56">
-    </testcase>
-    <testcase classname="bot initials accessibility transcript renders bot messages with accessible content" name="bot initials accessibility transcript renders bot messages with accessible content" time="11.965">
+    <testcase classname="markdown adjacent anchor merge only one tab stop is consumed by the merged anchor" name="markdown adjacent anchor merge only one tab stop is consumed by the merged anchor" time="6.835">
     </testcase>
   </testsuite>
-  <testsuite name="adaptive card radio button count" errors="0" failures="0" skipped="0" timestamp="2026-04-12T18:42:11" time="84.446" tests="3">
-    <testcase classname="adaptive card radio button count adaptive card renders with the correct number of radio options" name="adaptive card radio button count adaptive card renders with the correct number of radio options" time="20.232">
+  <testsuite name="mobile focus trap (Pixel 5 emulation)" errors="0" failures="2" skipped="0" timestamp="2026-05-07T03:06:32" time="11.727" tests="2">
+    <testcase classname="mobile focus trap (Pixel 5 emulation) Tab keeps focus inside the widget on mobile viewport" name="mobile focus trap (Pixel 5 emulation) Tab keeps focus inside the widget on mobile viewport" time="4.722">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: true
+Received: false
+    at C:\src\lcw\chat-widget\automation_tests\e2e\areas\accessibility\mobileFocusTrap.spec.ts:76:27
+    at Generator.next (&lt;anonymous&gt;)
+    at fulfilled (C:\src\lcw\chat-widget\automation_tests\e2e\areas\accessibility\mobileFocusTrap.spec.ts:24:58)</failure>
     </testcase>
-    <testcase classname="adaptive card radio button count radio buttons have correct accessible labels" name="adaptive card radio button count radio buttons have correct accessible labels" time="15.73">
-    </testcase>
-    <testcase classname="adaptive card radio button count radio group conveys correct option count to accessibility tree" name="adaptive card radio button count radio group conveys correct option count to accessibility tree" time="13.496">
+    <testcase classname="mobile focus trap (Pixel 5 emulation) Shift+Tab also keeps focus inside the widget on mobile viewport" name="mobile focus trap (Pixel 5 emulation) Shift+Tab also keeps focus inside the widget on mobile viewport" time="4.856">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: true
+Received: false
+    at C:\src\lcw\chat-widget\automation_tests\e2e\areas\accessibility\mobileFocusTrap.spec.ts:93:27
+    at Generator.next (&lt;anonymous&gt;)
+    at fulfilled (C:\src\lcw\chat-widget\automation_tests\e2e\areas\accessibility\mobileFocusTrap.spec.ts:24:58)</failure>
     </testcase>
   </testsuite>
-  <testsuite name="attachment upload announcement" errors="0" failures="0" skipped="0" timestamp="2026-04-12T18:42:11" time="85.853" tests="3">
-    <testcase classname="attachment upload announcement widget opens and shows upload button in designer mode" name="attachment upload announcement widget opens and shows upload button in designer mode" time="21.877">
+  <testsuite name="Layer 4 keyboard flows" errors="0" failures="0" skipped="0" timestamp="2026-05-07T03:06:44" time="41.103" tests="6">
+    <testcase classname="Layer 4 keyboard flows flow 1: open chat — chat button activates and opens the pane" name="Layer 4 keyboard flows flow 1: open chat — chat button activates and opens the pane" time="7.562">
     </testcase>
-    <testcase classname="attachment upload announcement file upload control is accessible" name="attachment upload announcement file upload control is accessible" time="19.238">
+    <testcase classname="Layer 4 keyboard flows flow 2: send message — input is reachable and focus mostly stays inside the widget" name="Layer 4 keyboard flows flow 2: send message — input is reachable and focus mostly stays inside the widget" time="5.972">
     </testcase>
-    <testcase classname="attachment upload announcement live region exists for status announcements" name="attachment upload announcement live region exists for status announcements" time="9.752">
+    <testcase classname="Layer 4 keyboard flows flow 3: attachment / Tab cycle is bounded inside widget" name="Layer 4 keyboard flows flow 3: attachment / Tab cycle is bounded inside widget" time="6.318">
+    </testcase>
+    <testcase classname="Layer 4 keyboard flows flow 4: header controls (close/transcript) are keyboard reachable" name="Layer 4 keyboard flows flow 4: header controls (close/transcript) are keyboard reachable" time="6.04">
+    </testcase>
+    <testcase classname="Layer 4 keyboard flows flow 5: Esc / close — focus does not escape to &lt;body&gt;" name="Layer 4 keyboard flows flow 5: Esc / close — focus does not escape to &lt;body&gt;" time="6.109">
+    </testcase>
+    <testcase classname="Layer 4 keyboard flows flow 6: re-open keyboard reachability — Tab cycle still bounded" name="Layer 4 keyboard flows flow 6: re-open keyboard reachability — Tab cycle still bounded" time="6.319">
+    </testcase>
+  </testsuite>
+  <testsuite name="adaptive card radio button count" errors="0" failures="0" skipped="0" timestamp="2026-05-07T03:07:25" time="30.513" tests="3">
+    <testcase classname="adaptive card radio button count adaptive card renders with the correct number of radio options" name="adaptive card radio button count adaptive card renders with the correct number of radio options" time="9.684">
+    </testcase>
+    <testcase classname="adaptive card radio button count radio buttons have correct accessible labels" name="adaptive card radio button count radio buttons have correct accessible labels" time="9.545">
+    </testcase>
+    <testcase classname="adaptive card radio button count radio group conveys correct option count to accessibility tree" name="adaptive card radio button count radio group conveys correct option count to accessibility tree" time="9.81">
+    </testcase>
+  </testsuite>
+  <testsuite name="attachment upload announcement" errors="0" failures="0" skipped="0" timestamp="2026-05-07T03:07:56" time="24.114" tests="3">
+    <testcase classname="attachment upload announcement widget opens and shows upload button in designer mode" name="attachment upload announcement widget opens and shows upload button in designer mode" time="7.539">
+    </testcase>
+    <testcase classname="attachment upload announcement file upload control is accessible" name="attachment upload announcement file upload control is accessible" time="7.824">
+    </testcase>
+    <testcase classname="attachment upload announcement live region exists for status announcements" name="attachment upload announcement live region exists for status announcements" time="7.66">
+    </testcase>
+  </testsuite>
+  <testsuite name="email transcript notification" errors="0" failures="0" skipped="0" timestamp="2026-05-07T03:08:20" time="21.848" tests="3">
+    <testcase classname="email transcript notification widget opens in designer mode with mock messages" name="email transcript notification widget opens in designer mode with mock messages" time="5.598">
+    </testcase>
+    <testcase classname="email transcript notification aria-live regions exist for immediate notification delivery" name="email transcript notification aria-live regions exist for immediate notification delivery" time="7.774">
+    </testcase>
+    <testcase classname="email transcript notification transcript container does not use assertive aria-live" name="email transcript notification transcript container does not use assertive aria-live" time="7.688">
+    </testcase>
+  </testsuite>
+  <testsuite name="bot initials accessibility" errors="0" failures="0" skipped="0" timestamp="2026-05-07T03:08:42" time="21.917" tests="3">
+    <testcase classname="bot initials accessibility widget loads with mock messages in designer mode" name="bot initials accessibility widget loads with mock messages in designer mode" time="5.596">
+    </testcase>
+    <testcase classname="bot initials accessibility bot messages use descriptive alt text instead of initials" name="bot initials accessibility bot messages use descriptive alt text instead of initials" time="6.668">
+    </testcase>
+    <testcase classname="bot initials accessibility transcript renders bot messages with accessible content" name="bot initials accessibility transcript renders bot messages with accessible content" time="8.765">
+    </testcase>
+  </testsuite>
+  <testsuite name="citation card accessibility" errors="0" failures="0" skipped="0" timestamp="2026-05-07T03:09:04" time="15.48" tests="2">
+    <testcase classname="citation card accessibility citation links do not expose title attribute to assistive tech" name="citation card accessibility citation links do not expose title attribute to assistive tech" time="7.092">
+    </testcase>
+    <testcase classname="citation card accessibility citation expressed as link is reachable as a single tab stop" name="citation card accessibility citation expressed as link is reachable as a single tab stop" time="6.898">
+    </testcase>
+  </testsuite>
+  <testsuite name="Email transcript pane — accessibility" errors="0" failures="0" skipped="4" timestamp="2026-05-07T03:09:19" time="0.732" tests="4">
+    <testcase classname="Email transcript pane — accessibility submit success announces &apos;Success. &apos; prefix via aria-live region" name="Email transcript pane — accessibility submit success announces &apos;Success. &apos; prefix via aria-live region" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Email transcript pane — accessibility submit success lands focus on notification banner, not the chat-widget shell" name="Email transcript pane — accessibility submit success lands focus on notification banner, not the chat-widget shell" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Email transcript pane — accessibility cancel restores focus to the element that opened the pane" name="Email transcript pane — accessibility cancel restores focus to the element that opened the pane" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Email transcript pane — accessibility submit failure announces &apos;Error. &apos; prefix via aria-live region" name="Email transcript pane — accessibility submit failure announces &apos;Error. &apos; prefix via aria-live region" time="0">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="focus trap - single focusable element" errors="0" failures="0" skipped="0" timestamp="2026-05-07T03:09:20" time="14.541" tests="3">
+    <testcase classname="focus trap - single focusable element chat button is visible and focusable" name="focus trap - single focusable element chat button is visible and focusable" time="4.507">
+    </testcase>
+    <testcase classname="focus trap - single focusable element Tab on the chat button keeps focus within the widget" name="focus trap - single focusable element Tab on the chat button keeps focus within the widget" time="4.731">
+    </testcase>
+    <testcase classname="focus trap - single focusable element Shift+Tab on the chat button keeps focus within the widget" name="focus trap - single focusable element Shift+Tab on the chat button keeps focus within the widget" time="4.526">
+    </testcase>
+  </testsuite>
+  <testsuite name="Layer 4 skip-link / landmark navigation (gap)" errors="0" failures="0" skipped="0" timestamp="2026-05-07T03:09:35" time="0.551" tests="0">
+    <testcase classname="Layer 4 skip-link / landmark navigation (gap) widget exposes a &apos;skip to chat input&apos; link reachable from the chat button" name="Layer 4 skip-link / landmark navigation (gap) widget exposes a &apos;skip to chat input&apos; link reachable from the chat button" time="0">
+    </testcase>
+    <testcase classname="Layer 4 skip-link / landmark navigation (gap) activating skip link moves focus to message input" name="Layer 4 skip-link / landmark navigation (gap) activating skip link moves focus to message input" time="0">
+    </testcase>
+    <testcase classname="Layer 4 skip-link / landmark navigation (gap) open widget exposes a single &lt;main&gt; landmark" name="Layer 4 skip-link / landmark navigation (gap) open widget exposes a single &lt;main&gt; landmark" time="0">
+    </testcase>
+    <testcase classname="Layer 4 skip-link / landmark navigation (gap) header controls are wrapped in a named landmark (e.g., &lt;nav aria-label=&apos;Chat header&apos;&gt;)" name="Layer 4 skip-link / landmark navigation (gap) header controls are wrapped in a named landmark (e.g., &lt;nav aria-label=&apos;Chat header&apos;&gt;)" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="Layer 3 desktop NVDA — critical flows" errors="0" failures="0" skipped="10" timestamp="2026-05-07T03:09:35" time="1.122" tests="10">
+    <testcase classname="Layer 3 desktop NVDA — critical flows chat button focus announces &apos;Chat, button&apos;" name="Layer 3 desktop NVDA — critical flows chat button focus announces &apos;Chat, button&apos;" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Layer 3 desktop NVDA — critical flows opening start-chat pane announces start-chat header" name="Layer 3 desktop NVDA — critical flows opening start-chat pane announces start-chat header" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Layer 3 desktop NVDA — critical flows sending a message announces &apos;message sent&apos;" name="Layer 3 desktop NVDA — critical flows sending a message announces &apos;message sent&apos;" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Layer 3 desktop NVDA — critical flows receiving a bot message announces &apos;said ...&apos;" name="Layer 3 desktop NVDA — critical flows receiving a bot message announces &apos;said ...&apos;" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Layer 3 desktop NVDA — critical flows agent typing announces &apos;is typing&apos;" name="Layer 3 desktop NVDA — critical flows agent typing announces &apos;is typing&apos;" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Layer 3 desktop NVDA — critical flows attachment sent announces &apos;attachment sent&apos;" name="Layer 3 desktop NVDA — critical flows attachment sent announces &apos;attachment sent&apos;" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Layer 3 desktop NVDA — critical flows transcript success announces &apos;email sent&apos;" name="Layer 3 desktop NVDA — critical flows transcript success announces &apos;email sent&apos;" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Layer 3 desktop NVDA — critical flows transcript error announces &apos;could not send email&apos;" name="Layer 3 desktop NVDA — critical flows transcript error announces &apos;could not send email&apos;" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Layer 3 desktop NVDA — critical flows end-chat confirm dialog announces &apos;end chat&apos;" name="Layer 3 desktop NVDA — critical flows end-chat confirm dialog announces &apos;end chat&apos;" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Layer 3 desktop NVDA — critical flows reconnect prompt announces &apos;reconnect&apos;" name="Layer 3 desktop NVDA — critical flows reconnect prompt announces &apos;reconnect&apos;" time="0">
+      <skipped/>
     </testcase>
   </testsuite>
 </testsuites>
